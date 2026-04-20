@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 15:30:52 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/20 21:03:16 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/20 21:20:18 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/20 21:22:37 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			count;
-	unsigned char	*ptr;
+	size_t				cont;
+	unsigned char		*ptr;
+	const unsigned char	*str;
 
-	count = 0;
-	ptr = (unsigned char *)s;
-	while (count < n)
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	ptr = (unsigned char *)dest;
+	str = (const unsigned char *)src;
+	if (str < ptr && ptr < str + n)
 	{
-		ptr[count] = 0;
-		count++;
+		while (n--)
+			ptr[n] = str[n];
 	}
+	else
+	{
+		cont = 0;
+		while (cont < n)
+		{
+			ptr[cont] = str[cont];
+			cont++;
+		}
+	}
+	return (dest);
 }

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 11:55:14 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/20 21:29:30 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/20 21:04:18 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/20 21:08:50 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft.h"
 
-# define LIBFT_H
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t				cont;
+	unsigned char		*ptr;
+	const unsigned char	*str;
 
-# include <stddef.h>
-
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-int		ft_strlen(const char *s);
-void	*ft_memset(void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memmove(void *dest, const void *src, size_t n);
-#endif
+	if (dest == NULL && src == NULL && n > 0)
+		return (NULL);
+	ptr = (unsigned char *)dest;
+	str = (const unsigned char *)src;
+	cont = 0;
+	while (cont < n)
+	{
+		ptr[cont] = str[cont];
+		cont++;
+	}
+	return (dest);
+}

@@ -6,7 +6,7 @@
 #    By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 11:53:10 by lupalomi          #+#    #+#              #
-#    Updated: 2026/04/20 15:37:25 by lupalomi         ###   ########.fr        #
+#    Updated: 2026/04/20 21:31:40 by lupalomi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRCS = ft_isalpha.c \
 	   ft_isprint.c \
 	   ft_strlen.c \
 	   ft_memset.c \
-	   ft_bzero.c
+	   ft_bzero.c \
+	   ft_memcpy.c \
+	   ft_memmove.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
