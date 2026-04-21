@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 15:17:26 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/21 11:53:24 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/21 14:58:42 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/21 15:33:10 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	count;
+	size_t	big_count;
+	size_t	little_count;
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
+	big_count = 0;
+	while (big[big_count] && big_count < len)
+	{
+		little_count = 0;
+		while (big[big_count + little_count] == little[little_count])
+			little_count++;
+		if (!little[little_count])
+			return ((char *)big + big_count);
+		big_count++;
+	}
+	return (NULL);
 }

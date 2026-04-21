@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 21:04:18 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/20 21:08:50 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/21 15:54:28 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/21 15:55:16 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t				cont;
+	size_t				count;
 	unsigned char		*ptr;
 	const unsigned char	*str;
 
@@ -22,11 +22,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		return (NULL);
 	ptr = (unsigned char *)dest;
 	str = (const unsigned char *)src;
-	cont = 0;
-	while (cont < n)
+	count = 0;
+	while (count < n)
 	{
-		ptr[cont] = str[cont];
-		cont++;
+		ptr[count] = str[count];
+		count++;
 	}
 	return (dest);
 }
