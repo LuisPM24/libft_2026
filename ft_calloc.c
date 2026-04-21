@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 12:02:58 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/21 20:10:24 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/21 20:40:05 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/21 21:23:46 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	src_size;
-	size_t	dst_size;
-	size_t	count;
+	size_t			ptr_size;
+	size_t			count;
+	unsigned char	*ptr;
 
-	dst_size = 0;
-	src_size = 0;
-	while (src[src_size] != '\0')
-		src_size++;
-	while (dst[dst_size] != '\0')
-		dst_size++;
-	if (dst_size >= size)
-		return (size + src_size);
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
+		return (NULL);
+	ptr_size = nmemb * size;
+	if (!ptr_size)
+		ptr_size++;
+	ptr = (unsigned char *)malloc(sizeof(unsigned char) * ptr_size);
+	if (!ptr)
+		return (NULL);
 	count = 0;
-	while (count < size - dst_size - 1 && src[count] != '\0')
+	while (count < ptr_size)
 	{
-		dst[dst_size + count] = src[count];
+		ptr[count] = 0;
 		count++;
 	}
-	dst[dst_size + count] = '\0';
-	return (dst_size + src_size);
+	return ((void *)ptr);
 }

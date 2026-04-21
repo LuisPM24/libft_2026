@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 12:02:58 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/21 20:10:24 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/21 20:29:55 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/21 20:30:44 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_atoi(const char *nptr)
 {
-	size_t	src_size;
-	size_t	dst_size;
-	size_t	count;
+	int	sign;
+	int	nbr;
+	int	count;
 
-	dst_size = 0;
-	src_size = 0;
-	while (src[src_size] != '\0')
-		src_size++;
-	while (dst[dst_size] != '\0')
-		dst_size++;
-	if (dst_size >= size)
-		return (size + src_size);
+	sign = 1;
+	nbr = 0;
 	count = 0;
-	while (count < size - dst_size - 1 && src[count] != '\0')
+	while (nptr[count] == ' ' || (nptr[count] >= 9 && nptr[count] <= 13))
+		count++;
+	if (nptr[count] == '+' || nptr[count] == '-')
 	{
-		dst[dst_size + count] = src[count];
+		if (nptr[count] == '-')
+			sign *= -1;
 		count++;
 	}
-	dst[dst_size + count] = '\0';
-	return (dst_size + src_size);
+	if (nptr[count] == '+' || nptr[count] == '-')
+		return (0);
+	while (nptr[count] >= 48 && nptr[count] <= 57)
+	{
+		nbr = (nbr * 10) + ((int)nptr[count] - '0');
+		count++;
+	}
+	return (nbr * sign);
 }

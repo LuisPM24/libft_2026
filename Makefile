@@ -6,7 +6,7 @@
 #    By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 11:53:10 by lupalomi          #+#    #+#              #
-#    Updated: 2026/04/21 15:23:09 by lupalomi         ###   ########.fr        #
+#    Updated: 2026/04/21 21:27:25 by lupalomi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ SRCS = ft_isalpha.c \
 	   ft_strncmp.c \
 	   ft_memchr.c \
 	   ft_memcmp.c \
-	   ft_strnstr.c
+	   ft_strnstr.c \
+	   ft_atoi.c \
+	   ft_calloc.c \
+	   ft_strdup.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
