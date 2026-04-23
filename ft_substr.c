@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 21:25:50 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/23 11:40:59 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/22 09:54:55 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/22 17:42:03 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	size;
 	size_t	count;
-	void	*ptr;
-	char	*str_cpy;
+	size_t	str_len;
+	char	*ptr;
 
-	size = 0;
 	count = 0;
-	while (s[size] != '\0')
-		size++;
-	ptr = malloc(size + 1);
-	if (ptr == NULL)
+	str_len = 0;
+	if (!s)
 		return (NULL);
-	str_cpy = (char *)ptr;
-	while (count < size)
+	while (s[str_len])
+		str_len++;
+	if (start >= str_len)
+		return (ft_calloc(1, sizeof(char)));
+	if (len > (str_len - start))
+		len = str_len - start;
+	ptr = malloc((len + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	while (count < len && (start + count) < str_len)
 	{
-		str_cpy[count] = s[count];
+		ptr[count] = s[count + start];
 		count++;
 	}
-	str_cpy[count] = '\0';
-	return (str_cpy);
+	ptr[count] = '\0';
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 #    By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 11:53:10 by lupalomi          #+#    #+#              #
-#    Updated: 2026/04/21 21:27:25 by lupalomi         ###   ########.fr        #
+#    Updated: 2026/04/23 12:20:04 by lupalomi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,18 +33,20 @@ SRCS = ft_isalpha.c \
 	   ft_strnstr.c \
 	   ft_atoi.c \
 	   ft_calloc.c \
-	   ft_strdup.c
+	   ft_strdup.c \
+	   ft_substr.c \
+	   ft_strjoin.c \
+	   ft_strtrim.c \
+	   ft_split.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
 CFLAG = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rcs
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)

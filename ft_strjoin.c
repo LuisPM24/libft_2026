@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 21:20:18 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/23 11:42:08 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/23 11:14:07 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/23 11:27:56 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t				count;
-	unsigned char		*ptr;
-	const unsigned char	*str;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*ptr;
 
-	if (dest == NULL && src == NULL)
+	if (!s1 || !s2)
 		return (NULL);
-	ptr = (unsigned char *)dest;
-	str = (const unsigned char *)src;
-	if (str < ptr && ptr < str + n)
-	{
-		while (n--)
-			ptr[n] = str[n];
-	}
-	else
-	{
-		count = 0;
-		while (count < n)
-		{
-			ptr[count] = str[count];
-			count++;
-		}
-	}
-	return (dest);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ptr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s1, s1_len + 1);
+	ft_strlcpy(ptr + s1_len, s2, s2_len + 1);
+	return (ptr);
 }
