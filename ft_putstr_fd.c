@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:44:43 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/24 11:29:58 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/25 11:38:32 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/25 11:40:24 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t			count;
-	unsigned char	*s_copy;
+	int	count;
 
 	count = 0;
-	s_copy = (unsigned char *)s;
-	while (count < n)
-	{
-		if (s_copy[count] == (unsigned char)c)
-			return ((void *)s_copy + count);
-		count++;
-	}
-	return (NULL);
+	while (s[count])
+		ft_putchar_fd(s[count++], fd);
 }

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:44:43 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/24 11:29:58 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/25 11:22:31 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/25 11:24:24 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t			count;
-	unsigned char	*s_copy;
+	unsigned int	count;
 
 	count = 0;
-	s_copy = (unsigned char *)s;
-	while (count < n)
+	if (!s || !f)
+		return ;
+	while (s[count])
 	{
-		if (s_copy[count] == (unsigned char)c)
-			return ((void *)s_copy + count);
+		f(count, &s[count]);
 		count++;
 	}
-	return (NULL);
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 14:44:43 by lupalomi          #+#    #+#             */
-/*   Updated: 2026/04/24 11:29:58 by lupalomi         ###   ########.fr       */
+/*   Created: 2026/04/24 11:19:41 by lupalomi          #+#    #+#             */
+/*   Updated: 2026/04/24 11:26:07 by lupalomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t			count;
-	unsigned char	*s_copy;
+	size_t	count;
+	size_t	len;
+	char	*str;
 
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
 	count = 0;
-	s_copy = (unsigned char *)s;
-	while (count < n)
+	while (count < len)
 	{
-		if (s_copy[count] == (unsigned char)c)
-			return ((void *)s_copy + count);
+		str[count] = f(count, s[count]);
 		count++;
 	}
-	return (NULL);
+	str[count] = '\0';
+	return (str);
 }
