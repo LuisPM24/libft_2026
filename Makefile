@@ -6,7 +6,7 @@
 #    By: lupalomi <lupalomi@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 11:53:10 by lupalomi          #+#    #+#              #
-#    Updated: 2026/04/25 12:01:05 by lupalomi         ###   ########.fr        #
+#    Updated: 2026/04/26 17:41:12 by lupalomi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,16 @@ SRCS = ft_isalpha.c \
 	   ft_putchar_fd.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
-	   ft_putnbr_fd.c
+	   ft_putnbr_fd.c \
+	   ft_lstnew.c \
+	   ft_lstadd_front.c \
+	   ft_lstsize.c \
+	   ft_lstlast.c \
+	   ft_lstadd_back.c \
+	   ft_lstdelone.c \
+	   ft_lstclear.c \
+	   ft_lstiter.c \
+	   ft_lstmap.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
